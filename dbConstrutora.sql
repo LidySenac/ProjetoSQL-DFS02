@@ -1,17 +1,4 @@
--- Apagando bd se existir
-drop database dbLoja;
-
--- criando banco de dados
-create database dbLoja;
-
--- acessando bd
-use dbLoja;
-
--- visualização banco de dados
-show databases;
-
 -- criando as tabelas no bd
-
 
 create table tbFuncionarios(
 codFunc int not null auto_increment,
@@ -83,29 +70,3 @@ foreign key(codCli) references tbClientes(codCli)
 
 -- visualizando as tabelas criadas
 show tables;
-
--- visualizando as estruturas das tabelas
-desc tbFuncionarios;
-desc tbFornecedores;
-desc tbClientes;
-desc tbUsuarios;
-desc tbProdutos;
-desc tbVendas;
-
-insert into tbFuncionarios(nome,email,cpf,telCel,logradouro,numero,cep,bairro,cidade,estado)
-	values('Lidian Paredes de Oliveira','jinx.oliveira@gmail.com','478.856.875-85','98523-8547','Rua Dr. Bueno','345','04750-000','Santo Amaro','Sao Paulo','SP');
-
-insert into tbFuncionarios(nome,email,cpf,telCel,logradouro,numero,cep,bairro,cidade,estado)
-	values('Gaby Linda Maravilhosa Bolos','gaby.lindabolos@gmail.com','475.850.874-90','98622-8544','Rua Da Alegria','145','04751-002','Santo Amaro','Sao Paulo','SP');
-
-	-- inserindo registros nas tabelas
- insert into tbUsuarios(nome,senha,codFunc)
-	 values('lidian.oliveira','deximbranco',1);
-
- insert into tbUsuarios(nome,senha,codFunc)
-	 values('gaby.lindabolosa','123456',2);
-
--- visualizando os registros nos campos das tabelas
-select * from tbFuncionarios; 
-select * from tbUsuarios;
-
