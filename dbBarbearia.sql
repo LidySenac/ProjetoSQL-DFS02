@@ -31,3 +31,6 @@ select * from tbProdutos;
 -- Apagando o Registro da Tabela --
 delete from tbProdutos where codProd = 1;
 select * from tbProdutos;
+
+-- Colocando as 
+select codProd as 'Código', descricao as 'Descrição', marca as 'Marca', preco as 'Preço' from tbProdutos;
