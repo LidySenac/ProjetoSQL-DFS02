@@ -158,7 +158,35 @@ select * from tbAutor;
 select * from tbCliente;
 select * from tbLivro;
 select * from tbVenda;
+select * from tbItensDaVenda;
 select * from tbEscreve;
+
+-- Alterando os Registros das Tabelas --
+
+-- tbCliente --
+update tbCliente set nome = 'Annie Benjamyn' where idCliente=2;
+
+
+update tbCliente set nome = 'Ariel Oliveira', telefone = '94037-3927' where idCliente=1;
+select * from tbCliente;
+
+-- tbLivro --
+update tbLivro set titulo = 'O voto de Lenobia', preco = 70.00, estoque = 10, idGenero =4 where idLivro = 1;
+
+update tbLivro set titulo = 'As Aventuras de Ariel ', preco = 10.00, estoque = 1, idGenero =5 where idLivro = 4;
+select * from tbLivro;
+
+-- Apagando o Registro da Tabela --
+
+-- delete from tbItensDaVenda where idVenda=2;
+
+-- delete from tbVenda where idCliente=3;
+
+-- delete from tbCliente where idCliente=3;
+
+select * from tbVenda;
+select * from tbCliente;
+select * from tbItensDaVenda;
 
 -- Tipos de Registros --
 -- Caracter = 'Senac' como campos de caracter(varchar, char, text)
