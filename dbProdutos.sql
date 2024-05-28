@@ -57,3 +57,6 @@ select distinct tipo from PRODUTOS; -- tipos sem repetição --
 select distinct tipo from PRODUTOS;
 
 select * from PRODUTOS where tipo = 'INFORMATICA';
+
+select distinct tipo from PRODUTOS order by tipo;
+ -- final --
