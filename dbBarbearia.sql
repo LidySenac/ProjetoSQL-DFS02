@@ -32,5 +32,23 @@ select * from tbProdutos;
 delete from tbProdutos where codProd = 1;
 select * from tbProdutos;
 
--- Colocando as 
-select codProd as 'Código', descricao as 'Descrição', marca as 'Marca', preco as 'Preço' from tbProdutos;
+-- Colocando Alias 'as' para nomear as tabelas -- 
+-- select codProd as 'Código', descricao as 'Descrição',
+-- marca as 'Marca', preco as 'Preço' from tbProdutos;
+-- modificar acentuação na coluna desejada.
+
+-- Colunas virtuais 
+--select codprod,descricao,marca,preco,'promoção' as 'promo' from tbprodutos;
+
+--select codprod,descricao,'promoção' as 'promo',marca,preco from tbprodutos;
+
+--select codProd as 'Código',descricao as 'Descrição',marca as 'Marca','sim' as 'vendido',preco as 'Prseço' from tbprodutos;
+
+-- utilizando calculos no Sql -- 
+-- update tbProdutos set preco = preco * 1.10 where codProd = 3; 
+	
+
+-- select preco * 0.90 as 'Desconto' from tbprodutos;
+
+update tbProdutos set preco = preco * 0.20 where codProd = 1;
+	select * from tbProdutos;
