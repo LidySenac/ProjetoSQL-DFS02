@@ -59,4 +59,18 @@ select distinct tipo from PRODUTOS;
 select * from PRODUTOS where tipo = 'INFORMATICA';
 
 select distinct tipo from PRODUTOS order by tipo;
+
+select * from produtos where valor > 600;
+
+select * from produtos where valor >= 600;
+
+select valor as 'Valor' from produtos where valor >= 600;
+
+-- Busca Por Código --
+select * from produtos where codigo = 1;
+
+-- Busca Por Nome --
+select * from produtos where tipo like '%a%'; -- Tudo o que tem 'a'
+select * from produtos where tipo like '%a'; -- Tudo o que termina com 'a' 
+select * from produtos where tipo like 'a%'; -- Tudo o que começa com 'a'
  -- final --
