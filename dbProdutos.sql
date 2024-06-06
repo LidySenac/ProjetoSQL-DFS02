@@ -73,4 +73,56 @@ select * from produtos where codigo = 1;
 select * from produtos where tipo like '%a%'; -- Tudo o que tem 'a'
 select * from produtos where tipo like '%a'; -- Tudo o que termina com 'a' 
 select * from produtos where tipo like 'a%'; -- Tudo o que começa com 'a'
+
+--Tipos de utilização da busca --
+-- nome like '%nome%'
+-- i% Tudo que começa com i
+-- %i Tudo que termina com i
+-- select * from produtos where tipo like 'i%';
+-- select * from produtos where tipo like '%s';
+-- select * from produtos where tipo like '%s%'; começo,meio e fim que tem a letra S (mais utilizado)
+
+-- Tipos de Expressões --
+-- AND (e) OR(ou) IN()(ou também) BETWEEN
+-- Com AND
+-- select * from produtos where tipo like '%o%' and valor <=600; Ele só trás o resultado verdadeiro por causa do AND
+-- select * from produtos where valor >=100 and valor <=300;
+
+-- Com OR
+-- select * from produtos where tipo like '%o%' or valor <=600;
+-- select * from produtos where tipo = 'INFORMATICA' or tipo = 'TELEFONE';
+
+-- Com IN()
+-- select * from produtos where tipo in('INFORMATICA','TELEFONE');
+-- select * from produtos where not tipo in('INFORMATICA','TELEFONE');
+
+-- Between sempre funciona com o AND (Do começo para o final, trazendo para dentro)
+-- select * from produtos where valor between 100 and 300;
+-- select * from produtos where valor not between 100 and 300; -->(Negando a Expressão)
  -- final --
+
+ -- Exercicios -- 
+ -- 1. Aumente em 12% o valor dos produtos cujos nomes iniciem com a letra 'F'
+ update produtos set valor = valor * 1.12 where nome like 'F%';
+ 	select * from produtos where nome like 'f%';
+
+ -- 2. Aumentar em 50 unidades todos os produtos cujo valor seja maior que 400 e inferior a 600
+ -- select * from produtos where valor >400 and valor <600; (RESPOSTA ERRADA)
+
+ update produtos set QUANTIDADE = QUANTIDADE + 50 where valor between 400 and 600;
+ select * from produtos where valor between 400 and 600; 
+
+ -- 3. Aplicar um desconto de 50% (*0.5) em todos os produtos que as unidades de estoque sejam maiores que 300
+ update produtos set valor = valor * 0.5 where QUANTIDADE > 300;
+ 	select * from produtos where QUANTIDADE > 300
+
+ -- 4. Exiba o produto de CODIGO = 4
+ select * from produtos where codigo = 4;
+
+ -- 5. Exibir todos os produtos que não tenham a letra 'Y'
+select * from produtos where nome not like '%Y%';
+select * from produtos;
+
+ -- 6. Exibir todos os produtos que se iniciem com nome 'MO' e tenham como tipo as letras'MA'
+ select * from produtos where nome like 'MO%' and tipo like '%MA%';
+select * from produtos;
