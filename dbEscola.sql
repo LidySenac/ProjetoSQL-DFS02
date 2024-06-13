@@ -8,13 +8,6 @@ create database dbEscola;
 use dbEscola;
 
 -- Criando Tabela --
-create table tbCursos(
-idCurso int not null,
-nome varchar(100) not null,
-data date,
-hora time,
-primary key(idCurso)
-);
 
 create table tbTurmas(
 idTurma int not null,
@@ -29,6 +22,15 @@ email varchar(100) not null,
 telefone char(9) not null,
 cpf char(14) not null unique,
 primary key(idFunc)
+);
+
+create table tbSalas(
+idSala int not null auto_increment,
+descricao varchar(100),
+localizacao varchar(30),
+data datetime,
+hora datetime,
+primary key(idSala)
 );
 
 create table tbAlunos(
@@ -48,6 +50,18 @@ primary key(re),
 foreign key(idFunc) references tbFuncionarios(idFunc)
 );
 
+create table tbCursos(
+idCurso int not null,
+idSala int not null,
+nome varchar(100) not null,
+data date,
+hora time,
+re char(7) not null,
+primary key(idCurso),
+foreign key(re) references tbProfessores(re),
+foreign key(idSala) references tbSalas(idSala)
+);
+
 create table tbUsuarios(
 idUsu int not null auto_increment,
 nome varchar(50) not null,
@@ -57,21 +71,19 @@ primary key(idUsu),
 foreign key(idFunc) references tbFuncionarios(idFunc)
 );
 
-
 create table tbMatriculas(
 idMatr char(13) not null,
-idCurso int not null,
 idTurma int not null,
 idUsu int not null,
+idCurso int not null,
 idAluno int not null,
 data date,
 hora time,
 primary key(idMatr),
-foreign key(idUsu) references tbUsuarios(idUsu),
 foreign key(idTurma) references tbTurmas(idTurma),
+foreign key(idUsu) references tbUsuarios(idUsu),
 foreign key(idCurso) references tbCursos(idCurso),
-foreign key(idAluno) references tbAlunos(idAluno)
-);
+foreign key(idAluno) references tbAlunos(idAluno));
 
 desc tbCursos;
 desc tbTurmas;
@@ -80,3 +92,4 @@ desc tbAlunos;
 desc tbProfessores;
 desc tbUsuarios;
 desc tbMatriculas;
+desc tbSalas;

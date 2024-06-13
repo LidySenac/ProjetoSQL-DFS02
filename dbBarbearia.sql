@@ -42,11 +42,10 @@ select * from tbProdutos;
 
 --select codprod,descricao,'promoção' as 'promo',marca,preco from tbprodutos;
 
---select codProd as 'Código',descricao as 'Descrição',marca as 'Marca','sim' as 'vendido',preco as 'Prseço' from tbprodutos;
+--select codProd as 'Código',descricao as 'Descrição',marca as 'Marca','sim' as 'vendido',preco as 'Preço' from tbprodutos;
 
 -- utilizando calculos no Sql -- 
 -- update tbProdutos set preco = preco * 1.10 where codProd = 3; 
-	
 
 -- select preco * 0.90 as 'Desconto' from tbprodutos;
 
