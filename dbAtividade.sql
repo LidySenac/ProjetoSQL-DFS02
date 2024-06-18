@@ -134,4 +134,37 @@ foreign key(codArt) references tbArtistas(codArt)
 
 -- Inserindo Registros --
 -- Tabela Artista --
-insert into tbArtistas(nome) values('Marisa')
+insert into tbArtistas(codArt,nome) values('1','Marisa Monte');
+
+insert into tbArtistas(codArt,nome) values('2','Gilberto Gil');
+
+insert into tbArtistas(codArt,nome) values('3','Caetano Veloso');
+
+insert into tbArtistas(codArt,nome) values('4','Milton Nascimento');
+
+insert into tbArtistas(codArt,nome) values('5','Legião Urbana');
+
+insert into tbArtistas(codArt,nome) values('6','The Beatles');
+
+insert into tbArtistas(codArt,nome) values('7','Rita Lee');
+
+-- Tabela Gravadoras --
+insert into tbGravadoras(codGrav,nome) values('1','Polygram');
+
+insert into tbGravadoras(codGrav,nome) values('2','EMI');
+
+insert into tbGravadoras(codGrav,nome) values('3','Som Livre');
+
+insert into tbGravadoras(codGrav,nome) values('4','Som Music');
+
+-- Tabela Categorias --
+insert into tbCategorias(codCat,nome) values('1','MPB');
+
+insert into tbCategorias(codCat,nome) values('2','Trilha Sonora');
+
+insert into tbCategorias(codCat,nome) values('3','Rock Internacional');
+
+insert into tbCategorias(codCat,nome) values('4','Rock Nacional');
+
+-- Tabela Estados --
+insert into tbCategorias(codCat,nome) values('1','EMI');
