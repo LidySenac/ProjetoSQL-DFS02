@@ -99,3 +99,5 @@ select med.nome as 'Medico',
  select pac.nome as 'Nome do Paciente', 
  med.nome as 'Nome do Medico' 
  from tbMedicos as med inner join tbPacientes as pac on med.idMedico = pac.idPaciente;
+
+ -- select localtime(); --

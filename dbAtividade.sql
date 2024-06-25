@@ -93,12 +93,12 @@ foreign key(codGrav) references tbGravadoras(codGrav)
 
 create table tbPedidos(
 codPed int not null,
-codCid int not null,
+codCli int not null,
 codFunc int not null,
 data datetime not null,
 valor decimal(9,2) not null default 0 check(valor >= 0),
 primary key(codPed),
-foreign key(codCid) references tbCidades(codCid),
+foreign key(codCli) references tbClientes(codCli),
 foreign key(codFunc) references tbFuncionarios(codFunc)
 );
 
@@ -267,25 +267,25 @@ insert into tbTitulos(codTiTu,codCat,codGrav,nome,valor,quantidade) values(9,3,2
 insert into tbTitulos(codTiTu,codCat,codGrav,nome,valor,quantidade) values(10,4,1,'Rita Lee',30.00,500);	
 
 -- Tabela Pedidos --
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(1,1,2,'2002/05/02',1500.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(1,1,2,'2002/05/02',1500.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(2,3,4,'2002/05/02',50.00);	
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(2,3,4,'2002/05/02',50.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(3,4,5,'2002/06/02',100.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(3,4,5,'2002/06/02',100.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(4,1,4,'2003/02/02',200.00);	
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(4,1,4,'2003/02/02',200.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(5,7,5,'2003/03/02',300.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(5,7,5,'2003/03/02',300.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(6,4,4,'2003/03/02',100.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(6,4,4,'2003/03/02',100.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(7,5,5,'2003/03/02',50.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(7,5,5,'2003/03/02',50.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(8,7,2,'2003/03/02',50.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(8,7,2,'2003/03/02',50.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(9,2,2,'2003/03/03',2000.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(9,2,2,'2003/03/03',2000.00);
 
-insert into tbPedidos(codPed,codCid,codFunc,data,valor) values(10,7,1,'2003/03/02',3000.00);
+insert into tbPedidos(codPed,codCli,codFunc,data,valor) values(10,7,1,'2003/03/02',3000.00);
 
 -- Tabela Titulos Do Pedidos --
 insert into tbTitulosDoPedidos(codNum,codPed,codTiTu,quantidade,valor) values(1,1,1,2,30.00);
@@ -349,7 +349,7 @@ select * from tbPedidos;
 select * from tbTitulosDoPedidos;
 select * from tbTitulosDoArtistas;
 
--- Questões das Páginas 88 á 89 --
+-- Questões das Páginas 88 a 89 --
 
 -- 1. Selecione o nome dos CDs e o nome da gravadora de cada CD.
 select TiTu.nome as 'Nome dos CDs',
@@ -365,9 +365,11 @@ Grav.nome as 'Nome da Gravadora',
 Cat.nome as 'Nome da Categorias' from tbTitulos as Titu inner join tbGravadoras as Grav on Titu.codGrav = Grav.codGrav inner join tbCategorias as Cat on Titu.codCat = Cat.codCat;
 
 -- 4. Selecione o nome dos clientes e os títulos dos CDs vendidos em cada pedido que o cliente fez.
+select Cli.nome as 'Nome dos Clientes',
+Titu.nome as 'Nome dos Pedidos' from tbClientes as Cli inner join tbPedidos as Ped on Cli.codCli = Ped.codCli inner join tbTitulosDoPedidos as TituPed on Ped.codPed = TituPed.codPed inner join tbTitulos as Titu on TituPed.codTitu = Titu.codTiTu;
 
 -- 5. Selecione o nome do funcionário, número, data e valor dos pedidos que este funcionário registrou, além do nome do cliente que está fazendo o pedido.
-
+select Fun.nome
 -- 6. Selecione o nome dos funcionários e o nome de todos os dependentes de cada funcionário.
 
 -- 7. Selecione o nome dos clientes e o nome dos cônjuges de cada cliente.
