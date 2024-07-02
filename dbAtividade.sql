@@ -369,9 +369,49 @@ select Cli.nome as 'Nome dos Clientes',
 Titu.nome as 'Nome dos Pedidos' from tbClientes as Cli inner join tbPedidos as Ped on Cli.codCli = Ped.codCli inner join tbTitulosDoPedidos as TituPed on Ped.codPed = TituPed.codPed inner join tbTitulos as Titu on TituPed.codTitu = Titu.codTiTu;
 
 -- 5. Selecione o nome do funcionário, número, data e valor dos pedidos que este funcionário registrou, além do nome do cliente que está fazendo o pedido.
-select Fun.nome
+select Func.nome as 'Nome dos Funcionarios',
+Ped.codPed as 'Numero do Pedido',
+Ped.data as 'Data do Pedido' from tbPedidos as Ped inner join tbFuncionarios as Func on Ped.codFunc = Func.codFunc inner join tbClientes as Cli on Ped.codCli = Cli.codCli;
+
 -- 6. Selecione o nome dos funcionários e o nome de todos os dependentes de cada funcionário.
+select Func.nome as 'Nome dos Funcionarios',
+Dep.nome as 'Nome dos Dependentes' from tbDependentes as Dep inner join tbFuncionarios as Func on Dep.codFunc = Func.codFunc;
 
 -- 7. Selecione o nome dos clientes e o nome dos cônjuges de cada cliente.
+select Cli.nome as 'Nome dos Clientes',
+Conj.nome as 'Nome do Conjuge' from tbConjuge as Conj inner join tbClientes as Cli on Conj.codCli = Cli.codCli;
+
+-- 8. Selecione o nome de todos os clientes. Se estes possuem cônjuges, mostrar os nomes de seus cônjuges também.
+select Cli.nome as 'Nome dos Clientes',
+Conj.nome as 'Nome do Conjuge' from tbConjuge as Conj inner join tbClientes as Cli on Conj.codCli = Cli.codCli;
 
 -- 9. Selecione o nome de todos os clientes. Se estes possuem cônjuges, mostrar os nomes de seus cônjuges também.
+select Cli.nome as 'Nome dos Clientes',
+Conj.nome as 'Nome do Conjuge',
+Ped.codPed as 'Numero do Pedido',
+Ped.valor as 'Valor dos Pedidos',
+Func.codFunc as 'Codigo do Funcionario' from tbPedidos as Ped right join tbClientes as Cli on Ped.codPed = Cli.codCli right join tbConjuge as Conj on Ped.codPed = Conj.codConj inner join tbFuncionarios as Func on Ped.codFunc = Func.codFunc;
+
+-- Questões das Páginas 101 a 102 --
+
+-- 1. Exiba quantos pedidos cada cliente fez.
+select Cli.nome as 'Clientes', count(*) as 'quantidade' from tbPedidos as Ped inner join tbClientes as Cli on Cli.codCli = Ped.codPed;
+
+-- 2. Exiba quantos CDs possui cada categoria.
+select Titu.nome as 'CDS', count(*) as 'Categorias' from tbCategorias as Cat inner join tbTitulos as Titu on Titu.codTitu = Cat.codCat;
+
+-- 3. Exiba quantos CDs possui cada gravadora.
+
+-- 4. Exiba quantos pedidos cada funcionário atendeu.
+
+-- 5. Exiba quantos dependentes tem cada funcionário.
+
+-- 6. Exiba quantos pedidos cada cliente fez, mostrando o nome dos clientes.
+
+-- 7. Exiba quantos CDs possui cada categoria, mostrando o nome das mesmas. 
+
+-- 8. Exiba quantos CDs possui cada gravadora, mostrando o nome das mesmas.
+
+-- 9. Exiba quantos pedidos cada funcionário atendeu, mostrando o nome dos funcionários.
+
+-- 10. Exiba quantos dependentes cada funcionário possui, mostrando seus nomes.
