@@ -410,12 +410,15 @@ select Ped.codPed as 'Pedidos', count(Func.codFunc) as 'Funcionarios' from tbFun
 select Dep.codDep as 'Quantidade de Dependentes', count(Func.codFunc) as 'Funcionarios' from tbFuncionarios as Func inner join tbDependentes as Dep on Dep.codFunc = Func.codFunc group by Func.codFunc;
 
 -- 6. Exiba quantos pedidos cada cliente fez, mostrando o nome dos clientes.
-select Ped.codPed as 'Pedidos', count(Cli.codCli) as 'Clientes' from tbPedidos as Ped inner join tbClientes as Cli on Ped.codCli = Cli.codCli group by Cli.codCli;
+select Cli.nome as 'Clientes', count(Ped.codPed) as 'Pedidos' from tbClientes as Cli inner join tbPedidos as Ped on Ped.codCli = Cli.codCli group by Cli.nome;
 
--- 7. Exiba quantos CDs possui cada categoria, mostrando o nome das mesmas. 
+-- 7. Exiba quantos CDs possui cada categoria, mostrando o nome das mesmas.
+select Titu.nome as 'CDS', count(Titu.codTiTu) as 'Categorias' from tbTitulos as Titu inner join tbCategorias as Cat on Titu.codCat = Cat.codCat group by Cat.nome; 
 
 -- 8. Exiba quantos CDs possui cada gravadora, mostrando o nome das mesmas.
+select Titu.nome as 'CDS', count(Grav.codGrav) as 'Quantidade' from tbGravadoras as Grav inner join tbTitulos as Titu on Titu.codGrav = Grav.codGrav group by Grav.nome;
 
 -- 9. Exiba quantos pedidos cada funcionário atendeu, mostrando o nome dos funcionários.
+select Ped.codPed as 'Pedidos', count(Func.codFunc) as 'Funcionarios' from tbFuncionarios as Func inner join tbPedidos as Ped on Ped.codFunc = Func.codFunc group by Func.nome;
 
 -- 10. Exiba quantos dependentes cada funcionário possui, mostrando seus nomes.
